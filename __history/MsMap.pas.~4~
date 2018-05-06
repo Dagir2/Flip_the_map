@@ -1,0 +1,11 @@
+unit MsMap;
+
+interface
+uses Pmap, Winapi.Windows, Winapi.Messages, System.SysUtils,Vcl.Imaging.pngimage;
+
+     type
+       Mmap = Array of Tmap;
+      Picture =Array of  Vcl.Imaging.pngimage;
+implementation
+
+end.

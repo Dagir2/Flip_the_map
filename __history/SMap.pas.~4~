@@ -1,0 +1,114 @@
+unit SMap;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.MPlayer, Vcl.ExtCtrls,Pmap,Gmap,MsMap,
+  Vcl.StdCtrls, Vcl.Imaging.pngimage,Vcl.Imaging.jpeg,Math;
+
+type
+
+
+  TForm1 = class(TForm)
+    Memo1: TMemo;
+    Button1: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+   procedure ImageOnClick(Sender: TObject);
+   procedure RandomAni(var A:Mas);
+   procedure booblesort(var A: Mas; min, max: Integer);
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  Map:Mmap;
+   Ani:Mas;
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.booblesort(var A: Mas; min, max: Integer);
+var i, tmp, n: Integer;
+Sort: Boolean;
+begin
+Sort:=True;
+n:=0;
+while Sort do
+  begin
+   Sort:=False;
+   for i:=min to max-1-n do
+     if A[i]>A[i+1] then
+       begin
+         Sort:=True;
+         tmp:=A[i]; A[i]:=A[i+1]; A[i+1]:=tmp;
+       end;
+   n:=n+1;
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var i:integer;
+begin
+booblesort(Ani,0,31);
+    for i := 0 to 31 do
+    memo1.Lines.Add(IntToStr(Ani[i]));
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+ MyThread:TGnMap;
+begin
+
+     RandomAni(Ani);
+   MyThread:=TGnMap.Create(False);
+  MyThread.Priority:=tpNormal;
+end;
+
+procedure TForm1.ImageOnClick(Sender: TObject);
+Var
+Fimage:TMap;
+i:integer;
+begin
+ if Sender is  TMap then
+   begin
+      Fimage:=TMap(Sender);
+
+
+      Fimage.Picture.LoadFromFile('Textures/Other/'+IntToStr(Ani[Fimage.x])+'.jpg');
+
+
+   end;
+end;
+
+procedure TForm1.RandomAni(var A: Mas);
+var
+  z,k,i:integer;
+begin
+  setlength(A,32);
+
+  for i := 0 to 31 do
+  A[i]:=0;
+
+ for z := 1 to 16 do
+ begin
+  i:=0;
+  while i<>2 do
+  begin
+    K:=RandomRange(0,32);
+  if A[K]=0 then
+    begin
+      A[K]:=z;
+      inc(i);
+    end;
+
+  end;
+
+ end;
+end;
+
+end.

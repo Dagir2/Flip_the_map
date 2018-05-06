@@ -8,7 +8,7 @@ type
       private
 
     public
-   x:byte;
+   x:integer;
  //  AMD:TMediaPlayer;
    procedure Create_AMD_and_Image;
    end;

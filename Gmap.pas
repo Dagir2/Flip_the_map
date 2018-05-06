@@ -10,15 +10,15 @@ uses
 type
   TGnmap = class(TThread)
   private
-  procedure CreateGnTopImageBOT(LeftShift,TopShift,j,i:integer);
+  procedure CreateGnTopImageBOT(LeftShift,TopShift,i:integer);
     { Private declarations }
   protected
     procedure Execute; override;
   end;
 
 implementation
-  uses Smap,Pmap;
-{ 
+  uses Smap,Pmap,Vcl.Imaging.jpeg;
+{
   Important: Methods and properties of objects in visual components can only be
   used in a method called using Synchronize, for example,
 
@@ -51,43 +51,46 @@ implementation
 
 { Gmap }
 
-procedure TGnmap.CreateGnTopImageBOT(LeftShift, TopShift, j, i: integer);
+procedure TGnmap.CreateGnTopImageBOT(LeftShift, TopShift, i: integer);
 begin
-  Map[j,i]:=TMap.Create(Form1);
-  Map[j,i].Parent:=Form1;
-  Map[j,i].Left:=10+LeftShift;
-  Map[j,i].Top:=10+TopShift;
-  Map[j,i].Width:=100;
-  Map[j,i].Height:=150;
-  Map[j,i].Picture.LoadFromFile('Textures/Other/TopImage.png');
-  Map[j,i].Stretch:=True;
-  Map[j,i].Visible:=true;
-  Map[j,i].Tag:=i;
-  Map[j,i].OnClick:=Form1.ImageOnClick;
+  Map[i]:=TMap.Create(Form1);
+  Map[i].Parent:=Form1;
+  Map[i].Left:=30+LeftShift;
+  Map[i].Top:=50+TopShift;
+  Map[i].Width:=150;
+  Map[i].Height:=200;
+  Map[i].Picture.LoadFromFile('Textures/Other/0.jpg');
+  Map[i].Stretch:=True;
+  Map[i].Visible:=true;
+  Map[i].x:=i;
+  Map[i].Tag:=i;
+  Map[i].OnClick:=Form1.ImageOnClick;
 end;
 
 
 
 procedure TGnmap.Execute;
-var i,j,LeftShift,TopShift:integer;
+var i,j1,j,x1,LeftShift,TopShift:integer;
 begin
 
-  setlength(Map,x,x);
+  setlength(Map,32);
 
        LeftShift:=0;
        TopShift:=0;
+           i:=0;
 
-
-       for i := 0 to x-1 do
+       for j1 := 0 to 3 do
        begin
-        for j := 0 to x-1 do
+        for j := 0 to 7 do
          begin
-        CreateGnTopImageBOT(LeftShift,TopShift,j,i);
 
-        LeftShift:=LeftShift+105;
+        CreateGnTopImageBOT(LeftShift,TopShift,i);
+
+        LeftShift:=LeftShift+155;
+        inc(i);
         end;
          LeftShift:=0;
-          TopShift:=TopShift+155;
+          TopShift:=TopShift+205;
        end;
 
 
