@@ -58,7 +58,7 @@ begin
    begin
       Fimage:=TMap(Sender);
 
-        Fimage.Enabled:=false;
+
       Fimage.Picture.LoadFromFile('Textures/Other/'+IntToStr(Ani[Fimage.x])+'.jpg');
         if Ani[Fimage.x]=Pler then
           begin
