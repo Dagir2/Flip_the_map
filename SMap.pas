@@ -12,8 +12,12 @@ type
 
   TForm1 = class(TForm)
     Timer1: TTimer;
+    Label1: TLabel;
+    Timer2: TTimer;
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Timer2Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,12 +31,17 @@ var
   Map:Mmap;
    Ani:Mas;
    NotRep:MNotRep;
-   Klik,Pler:integer;
+   Klik,Pler,Time:integer;
 implementation
 
 {$R *.dfm}
 
 
+
+procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+halt;
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 var
@@ -121,6 +130,31 @@ for i := 0 to 31 do
          Map[i].Enabled:=true;
 
     Timer1.Enabled:=false;
+end;
+
+procedure TForm1.Timer2Timer(Sender: TObject);
+var i:integer;
+t:boolean;
+begin
+  t:=true;
+  for i := 0 to 11 do
+  if NotRep[i]=false then
+     T:=false;
+
+
+     if T=false then
+              begin
+   Time:=Time+1;
+   label1.Caption:=IntToStr(Time);
+
+              end;
+
+              if T then
+              begin
+              Timer2.Enabled:=false;
+              showmessage('Вы собрали все карты ваше время = '+ IntToStr(Time));
+
+              end;
 end;
 
 end.

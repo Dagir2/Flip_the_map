@@ -1,20 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.222,E:\Kursach\Flip_the_map\Unit1.pas=E:\Kursach\Flip_the_map\Gmap.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.404,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.511,E:\Kursach\Flip_the_map\Unit1.pas=E:\Kursach\Flip_the_map\PMap.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.545,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.996,E:\Kursach\Flip_the_map\Unit1.pas=E:\Kursach\Flip_the_map\MsMap.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.086,D:\Kursach\Flip_the_map\Smenu.dfm=D:\Kursach\Flip_the_map\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.098,D:\Kursach\Flip_the_map\SOption.dfm=D:\Kursach\Flip_the_map\Unit3.dfm</Transaction>
     <Transaction>1899.12.30 00:00:00.000.749,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.796,E:\Kursach\Flip_the_map\Unit1.pas=E:\Kursach\Flip_the_map\Gmap.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.545,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.646,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.744,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.588,C:\Users\danil\Documents\Embarcadero\Studio\Projects\Project1.dproj=E:\Kursach\Flip_the_map\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.766,C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.dfm=E:\Kursach\Flip_the_map\SMap.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.863,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.766,C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas=E:\Kursach\Flip_the_map\SMap.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.870,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.245,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.086,D:\Kursach\Flip_the_map\Smenu.pas=D:\Kursach\Flip_the_map\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.870,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.863,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.744,=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.404,=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.796,E:\Kursach\Flip_the_map\Gmap.pas=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,E:\Kursach\Flip_the_map\Project1.dproj=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.222,E:\Kursach\Flip_the_map\Gmap.pas=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.766,E:\Kursach\Flip_the_map\SMap.pas=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.996,E:\Kursach\Flip_the_map\MsMap.pas=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.511,E:\Kursach\Flip_the_map\PMap.pas=E:\Kursach\Flip_the_map\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.098,D:\Kursach\Flip_the_map\SOption.pas=D:\Kursach\Flip_the_map\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.766,E:\Kursach\Flip_the_map\SMap.dfm=C:\Users\danil\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.715,=D:\Kursach\Flip_the_map\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.000,=D:\Kursach\Flip_the_map\Unit2.pas</Transaction>
   </Transactions>
 </BorlandProject>
