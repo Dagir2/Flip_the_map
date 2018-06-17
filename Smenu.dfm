@@ -1,9 +1,10 @@
 object Form2: TForm2
-  Left = 0
-  Top = 0
+  Left = 240
+  Top = 199
+  BorderStyle = bsDialog
   Caption = #1052#1077#1085#1102
-  ClientHeight = 231
-  ClientWidth = 505
+  ClientHeight = 241
+  ClientWidth = 515
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,40 +12,48 @@ object Form2: TForm2
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
+  OnCloseQuery = FormCloseQuery
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
     Left = 112
-    Top = 24
+    Top = 40
     Width = 273
     Height = 25
-    Caption = #1053#1072#1095#1072#1090#1100
+    Caption = #1048#1075#1088#1072
     TabOrder = 0
     OnClick = Button1Click
   end
-  object Button2: TButton
-    Left = 112
-    Top = 55
-    Width = 273
-    Height = 25
-    Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
-    TabOrder = 1
-    OnClick = Button2Click
-  end
   object Button3: TButton
     Left = 112
-    Top = 86
+    Top = 84
     Width = 273
     Height = 25
     Caption = #1057#1087#1088#1072#1074#1082#1072
-    TabOrder = 2
+    TabOrder = 1
+    OnClick = Button3Click
   end
   object Button4: TButton
     Left = 112
-    Top = 117
+    Top = 164
     Width = 273
     Height = 25
     Caption = #1042#1099#1093#1086#1076
+    TabOrder = 2
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 112
+    Top = 125
+    Width = 273
+    Height = 25
+    Caption = #1058#1077#1089#1090
     TabOrder = 3
+    OnClick = Button5Click
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 440
+    Top = 24
   end
 end

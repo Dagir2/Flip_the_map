@@ -1,4 +1,4 @@
-unit SOption;
+unit SOption;   // Планируеться другие режимы
 
 interface
 

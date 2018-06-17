@@ -1,0 +1,225 @@
+ unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    ComboBox1: TComboBox;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Edit3: TEdit;
+    Edit2: TEdit;
+    Edit4: TEdit;
+    Button1: TButton;
+    Memo1: TMemo;
+    Timer1: TTimer;
+    RadioGroup1: TRadioGroup;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+  mas = array [1..3] of string[50] ;
+  voprosi=record
+    vopros:string[50];
+    otveti : mas;
+  end;
+var
+  Form1: TForm1;
+  f: file of voprosi;
+  vopross:voprosi;
+  mnogvopr,mnogotv:set of byte;
+  kolvopravotv,kolvoallotv:integer;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var i:integer;
+begin
+ assignfile(f,'1.dat');
+ if fileexists('1.dat') then
+  begin
+    reset(f);
+  end
+  else
+  rewrite(f);
+  seek(f,filesize(f));//  на последнец позиции в файле
+  vopross.vopros:=edit1.Text;
+
+    case RadioGroup1.ItemIndex of
+       0:begin
+         vopross.otveti[1]:=edit2.Text;// всегда правильвный ответ
+          vopross.otveti[2]:=edit3.Text;
+         vopross.otveti[3]:=edit4.Text;
+       end;
+       1:begin
+         vopross.otveti[1]:=edit3.Text;// всегда правильвный ответ
+          vopross.otveti[2]:=edit2.Text;
+         vopross.otveti[3]:=edit4.Text;
+       end;
+
+       2:begin
+           vopross.otveti[1]:=edit2.Text;// всегда правильвный ответ
+          vopross.otveti[2]:=edit3.Text;
+         vopross.otveti[3]:=edit4.Text;
+       end;
+    end;
+
+
+  write(f,vopross);
+  closefile(f);
+  reset(f);
+  memo1.Clear;
+  for i:=0 to filesize(f)-1 do
+    begin
+      read(f,vopross);
+      memo1.Lines.Add(vopross.vopros);
+      memo1.Lines.Add('-----------------');
+      memo1.Lines.Add('1) '+vopross.otveti[1]);
+      memo1.Lines.Add('2) '+vopross.otveti[2]);
+      memo1.Lines.Add('3) '+vopross.otveti[3]);
+      memo1.Lines.Add('*****************');
+    end;
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+var n,k:integer;
+t:boolean;
+begin
+  t:=false;
+  assignfile(f,'1.dat');
+  reset(f);
+  if combobox1.Items[combobox1.ItemIndex]=vopross.otveti[1] then
+  begin
+    inc(kolvopravotv);
+   // showmessage('otv prav'+'kolvo='+inttostr(kolvopravotv));
+  end;
+  //showmessage('otvet ne prav');
+  if kolvoallotv=filesize(f) then
+  begin
+    showmessage('тест завершен'+'  '+'общее число вопросов = '+inttostr(kolvoallotv)+'  '+'кол-во прав ответов = '+ inttostr(kolvopravotv));
+    exit;
+  end;
+  while t=false do
+  begin
+  n:=random(filesize(f));
+
+  if not (n in mnogotv ) then
+    begin
+
+      mnogotv:=mnogotv+[n];
+      seek(f,n);
+      read(f,vopross);
+      t:=true;
+      label1.Caption:=vopross.vopros;
+      inc(kolvoallotv);
+      combobox1.Clear;
+      mnogvopr:=[];
+      k:=0;
+    while k<3 do
+      begin
+        n:=random(3)+1;
+        if not(n in mnogvopr) then
+        begin
+        inc(k);
+        mnogvopr:=mnogvopr+[n];
+        combobox1.Items.Add(vopross.otveti[n]);
+        end;
+      end;
+    end;
+
+    end;
+
+
+ closefile(f);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var k,n,j,i:integer;
+begin
+  kolvoallotv:=0;
+  randomize;
+  mnogotv:=[];
+  assignfile(f,'1.dat');
+  if fileexists('1.dat') then
+  begin
+    Edit1.Visible:=false;
+    edit2.Visible:=false;
+    edit3.Visible:=false;
+    edit4.Visible:=false;
+    button1.Visible:=false;
+    kolvopravotv:=0;
+    reset(f);
+    n:=random(filesize(f));
+    mnogotv:=mnogotv+[n];
+    seek(f,n);
+    read(f,vopross);
+    label1.Caption:=vopross.vopros;
+    inc(kolvoallotv);
+    combobox1.Clear;
+    mnogvopr:=[];
+    k:=0;
+    while k<3 do
+      begin
+        n:=random(3)+1;
+        if not(n in mnogvopr) then
+        begin
+        inc(k);
+        mnogvopr:=mnogvopr+[n];
+        combobox1.Items.Add(vopross.otveti[n]);
+        end;
+      end;
+      closefile(f);
+  end
+  else
+  showmessage('файла нет');
+
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+var n,k:integer;
+t:boolean;
+begin
+if timer1.Interval=0 then
+  begin
+    while t=false do
+  begin
+  n:=random(filesize(f));
+
+  if not (n in mnogotv ) then
+    begin
+      mnogotv:=mnogotv+[n];
+      seek(f,n);
+      read(f,vopross);
+      t:=true;
+      label1.Caption:=vopross.vopros;
+      inc(kolvoallotv);
+      combobox1.Clear;
+      mnogvopr:=[];
+      k:=0;
+    while k<3 do
+      begin
+        n:=random(3)+1;
+        if not(n in mnogvopr) then
+        begin
+        inc(k);
+        mnogvopr:=mnogvopr+[n];//добавляем множество ген вопрос
+        combobox1.Items.Add(vopross.otveti[n]);
+        end;
+      end;
+    end;
+  end;
+end;
+end;
+
+end.

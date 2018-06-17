@@ -1,4 +1,4 @@
-unit MsMap;
+unit MsMap;     // Вспомогательные масивы
 
 interface
 uses Pmap, Winapi.Windows, Winapi.Messages, System.SysUtils,Vcl.Imaging.jpeg;

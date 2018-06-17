@@ -1,0 +1,94 @@
+unit Test;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm4 = class(TForm)
+    RadioGroup1: TRadioGroup;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form4: TForm4;
+
+implementation
+     uses Smenu;
+{$R *.dfm}
+
+
+
+procedure TForm4.Button1Click(Sender: TObject);
+var n,k,i:integer;
+t:boolean;
+begin
+  t:=false;
+   assignfile(f,Form2.opendialog1.filename);
+  reset(f);
+  if RadioGroup1.Items[RadioGroup1.ItemIndex]=vopross.otveti[1] then
+  begin
+    inc(kolvopravotv);
+
+  end;
+
+  if kolvoallotv=filesize(f) then
+  begin
+     mnogvopr:=[];
+     mnogotv:=[];
+
+    showmessage('тест завершен'+'  '+'общее число вопросов = '+inttostr(kolvoallotv)+'  '+'кол-во прав ответов = '+ inttostr(kolvopravotv));
+      kolvopravotv:=0;
+      kolvoallotv:=0;
+    exit;
+  end;
+  while t=false do
+  begin
+  n:=random(filesize(f));
+
+  if not (n in mnogotv ) then
+    begin
+
+      mnogotv:=mnogotv+[n];
+      seek(f,n);
+      read(f,vopross);
+      t:=true;
+      RadioGroup1.Caption:=vopross.vopros;
+      inc(kolvoallotv);
+
+
+      RadioGroup1.Items.Clear;
+
+      mnogvopr:=[];
+      k:=0;
+    while k<3 do
+      begin
+        n:=random(3)+1;
+        if not(n in mnogvopr) then
+        begin
+        inc(k);
+        mnogvopr:=mnogvopr+[n];
+        RadioGroup1.Items.Add(vopross.otveti[n]);
+        end;
+      end;
+    end;
+
+    end;
+ closefile(f);
+ button1.Enabled:=false;
+end;
+
+procedure TForm4.RadioGroup1Click(Sender: TObject);
+begin
+button1.Enabled:=True;
+end;
+
+end.
